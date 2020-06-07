@@ -1,7 +1,7 @@
 #### Ejemplos : Series economicas ####
 
 rm(list = ls())
-setwd("C:/Users/AZCH/Desktop/Clase4_R/")
+setwd("C:/Users/AZCH/Desktop/Clase4R4DS/")
 getwd()
 dir()
 # Precios de un articulo : Oro
@@ -86,6 +86,100 @@ ggplot(data = Oro, mapping = aes(x = Fecha, y = Precio))+
   ggtitle("Precio del Oro [GOLDAMGBD228NLBM]")+
   labs(subtitle = "Fuente ; https://fred.stlouisfed.org",
        caption = "Clase 4:CTIC-UNI")
+
+# Luego de instalar los paquetes hrbrthemes y viridis, podemos ver su documentacion 
+library(hrbrthemes)
+library(viridis)
+
+library(help = "hrbrthemes")
+library(help = "viridis")
+
+# Practiquemos el uso del operador %>% (pipe/tuberia)
+x11()
+Oro %>%
+  ggplot(aes(x = Fecha, y = Precio, colour = año))+
+  geom_line() + # capa geometrica
+  scale_color_viridis()+ 
+  theme_ipsum()+
+  xlab(paste("Fecha [" , head(Oro, n = 1)$Fecha , "-", tail(Oro, n =1)$Fecha,"]"))+
+  ylab("Precio [USD]")+
+  ggtitle("Precio del Oro [GOLDAMGBD228NLBM]")+
+  labs(subtitle = "Fuente ; https://fred.stlouisfed.org",
+       caption = "Clase 4:CTIC-UNI")+
+  theme( # https://github.com/azchr4ds/Clase3R4DS/blob/master/script02.R
+    legend.position = c(0.05, 0.85),
+    plot.title = element_text(size = 18, hjust = 1),
+    plot.subtitle = element_text(size = 9, hjust = 1)
+  )
+
+
+# Convirtamos la variable año en una variable categorica (factor)
+x11()
+Oro <- Oro %>%
+  mutate(año= as.factor(año))
+
+str(Oro)
+
+Oro %>%  
+  ggplot(aes(x = Fecha, y = Precio, colour = año))+
+  geom_line() + # capa geometrica
+  # scale_color_viridis()+ 
+  # theme_ipsum()+
+  xlab(paste("Fecha [" , head(Oro, n = 1)$Fecha , "-", tail(Oro, n =1)$Fecha,"]"))+
+  ylab("Precio [USD]")+
+  ggtitle("Precio del Oro [GOLDAMGBD228NLBM]")+
+  labs(subtitle = "Fuente ; https://fred.stlouisfed.org",
+       caption = "Clase 4:CTIC-UNI")+
+  theme( # https://github.com/azchr4ds/Clase3R4DS/blob/master/script02.R
+    legend.position = c(0.1, 0.5),
+    plot.title = element_text(size = 18, hjust = 1),
+    plot.subtitle = element_text(size = 9, hjust = 1)
+  )
+ggsave("Oro1.png", width = 16, height = 9, dpi = 72)
+
+#### Calculos y graficos de resumen ####
+Oro2015 <- Oro %>% filter(año == 2015)
+Oro2016 <- filter(.data = Oro, Fecha > "2015-12-31" & Oro$Fecha<= "2016-12-31")
+
+# Creamos un data frame para los promedios anuales 
+PromedioAnual <- Oro %>%
+  group_by(año)%>%
+  summarise(Numero = n(), Promedio = mean(Precio, na.rm = TRUE))
+
+# Mostremos el comportamiento promedio por año
+PromedioAnual <- PromedioAnual %>%
+  mutate(año = 1968:2020)
+
+PromedioAnual %>%
+  ggplot(mapping = aes(x = año , y = Promedio))+
+  geom_point()+
+  labs(title = "Promedio Anual de los precios del oro",
+       subtitle = "Fuente : FED de Sn Louis",
+       caption = "Clase4: CTIC-UNI")+
+  ylab("Precios [USD]")+
+  xlab(paste("Años : " , min(PromedioAnual$año) ,"-" , max(PromedioAnual$año)))
+
+PromedioAnual %>% 
+  mutate(decada = as.factor(floor_decade(PromedioAnual$año))) %>%
+  ggplot(mapping = aes(x = año , y = Promedio, colour = decada))+
+  geom_point()+
+  labs(title = "Promedio Anual de los precios del oro",
+       subtitle = "Fuente : FED de Sn Louis",
+       caption = "Clase4: CTIC-UNI")+
+  ylab("Precios [USD]")+
+  xlab(paste("Años : " , min(PromedioAnual$año) ,"-" , max(PromedioAnual$año)))
+  
+
+
+
+
+
+
+
+
+
+
+
 
 
 
