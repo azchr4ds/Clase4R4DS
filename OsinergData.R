@@ -49,29 +49,29 @@ minute(OsinergEnero2k18$FechaDate)
 # Lady : MAyo (2018-2019) 
 # Lazo Arroyo :Junio (2018-2019) 
 # Leonardo Castillo : Julio (2018-2019)
-# Lorena Dueñas : Agosto (2018-2019)  
+# Lorena DueÃ±as : Agosto (2018-2019)  
 # MArilyn Zapata : Setiembre (2018-2019)
-# Renzo Peñaranda : Octubre (2018-2019)
+# Renzo PeÃ±aranda : Octubre (2018-2019)
 # Ronny Delgado : Noviembre (2018-2019)
 # Victor Lazo : Diciembre (2018-2019)
 
 # Recordar que las variables son :
-# Código de la Empresa Eléctrica Suministradora	
-# Código del Suministro del Usuario Libre	
-# Código del Punto de Suministro	
+# CÃ³digo de la Empresa ElÃ©ctrica Suministradora	
+# CÃ³digo del Suministro del Usuario Libre	
+# CÃ³digo del Punto de Suministro	
 # Fecha (AAAAMMDDHHMM)	
-# Registro de Energía Activa en kW.h	
-# Registro de Energía Reactiva en kVarh	
+# Registro de EnergÃ­a Activa en kW.h	
+# Registro de EnergÃ­a Reactiva en kVarh	
 # Periodo	
 
 
 ### habra evaluaciones de las clases 4ta, 5ta y 6ta
 ### Fecha de entrega : siguiente domingo hasta las 6:00AM
-### Evaluacion clase 4 : 14/06/2020 [6:00AM]
-### Evaluacion clase 5 : 21/06/2020 [6:00AM]
-### Evaluacion clase 6 : 28/06/2020 [6:00AM]
+### Evaluacion clase 4 : Fecha de Entrega 14/06/2020 [6:00AM]
+### Evaluacion clase 5 : Fecha de Entrega 21/06/2020 [6:00AM]
+### Evaluacion clase 6 : Fecha de Entrega 28/06/2020 [6:00AM]
 
-
+### Cualquuier consulta en el foro del curso 
 
 
 
